@@ -1,7 +1,7 @@
 pyrogram
 tgcrypto
 pyromod
-flask
 requests
 pytz
-asyncio
+yt-dlp
+
