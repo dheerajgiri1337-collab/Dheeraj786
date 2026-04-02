@@ -9,10 +9,10 @@ from threading import Thread
 from vars import API_ID, API_HASH, BOT_TOKEN, OWNER, TOTAL_USERS
 import globals
 
-# --- KEEP ALIVE SERVER (For Render) ---
+# --- KEEP ALIVE SERVER (For Render Free Tier) ---
 app = Flask(__name__)
 @app.route('/')
-def home(): return "Dheeraj Uploader is Online!"
+def home(): return "Dheeraj Giri Uploader is Online!"
 
 def run_flask():
     port = int(os.environ.get("PORT", 8080))
@@ -22,43 +22,44 @@ def keep_alive():
     t = Thread(target=run_flask)
     t.daemon = True
     t.start()
-# -------------------------------------
+# -----------------------------------------------
 
 bot = Client("bot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
 
-# --- NEW INTERFACE BUTTONS ---
+# --- CLASSY INTERFACE BUTTONS ---
 main_buttons = InlineKeyboardMarkup([
     [
         InlineKeyboardButton("🎙️ Commands", callback_data="all_commands"),
         InlineKeyboardButton("⚙️ Settings", callback_data="setttings")
     ],
     [
-        InlineKeyboardButton("💎 Premium", callback_data="upgrade_command"),
+        InlineKeyboardButton("💳 Premium", callback_data="upgrade_command"),
         InlineKeyboardButton("📊 Status", callback_data="info_command")
     ],
     [
-        InlineKeyboardButton("👨‍💻 Developer", url=f"tg://openmessage?user_id={OWNER}")
+        InlineKeyboardButton("👤 Contact Owner", url=f"tg://openmessage?user_id={OWNER}")
     ]
 ])
 
 @bot.on_message(filters.command("start"))
 async def start(bot, m: Message):
-    # Aapka New Branded Welcome Message
+    # Aapka New Classy Welcome Message
     caption = (
-        f"👋 **Hey {m.from_user.first_name}**!\n\n"
-        f"🚀 **Welcome to Dheeraj Uploader Bot**\n\n"
-        f"➠ I can extract videos/PDFs from your TXT files.\n"
-        f"➠ Fast, Secure, and 24/7 Active.\n\n"
-        f"✨ **Powered By:** `𝐃𝐡𝐞𝐞𝐫𝐚𝐣 𝐁𝐨𝐭𝐬` 🦁\n"
-        f"━━━━━━━━━━━━━━━━━━━━"
+        f"👑 **Welcome, {m.from_user.first_name}!**\n\n"
+        f"You are now using the official uploader bot of\n"
+        f"✨ `𝐃𝐡𝐞𝐞𝐫𝐚𝐣 𝐆𝐢𝐫𝐢`.\n\n"
+        f"➠ Submit your TXT file to begin extraction.\n"
+        f"➠ High-speed, secure, and 24/7 processing.\n\n"
+        f"━━━━━━━━━━━━━━━━━━━━\n"
+        f"**Official Brand:** `@DheerajGiri_Bots` 🦁"
     )
     
-    # Aapka Naya Wallpaper Link Yahan Hai
-    new_wallpaper = "https://graph.org/file/e671031c27c824fd5b0ac.jpg"
+    # Aapka Final DG Logo Direct Link
+    logo_wallpaper = "https://i.ibb.co/XQZ1r1n/1000479523.jpg"
     
     await bot.send_photo(
         chat_id=m.chat.id,
-        photo=new_wallpaper, 
+        photo=logo_wallpaper, 
         caption=caption,
         reply_markup=main_buttons
     )
@@ -74,6 +75,5 @@ register_commands_handlers(bot)
 
 if __name__ == "__main__":
     keep_alive() 
-    print("🚀 Dheeraj Bot is LIVE with New Wallpaper!")
+    print("🚀 Dheeraj Giri Bot is LIVE with Final Branding!")
     bot.run()
-
