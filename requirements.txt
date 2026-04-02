@@ -1,6 +1,7 @@
-pip>=23.0.0
-setuptools>=65.0.0
-wheel
-gunicorn
-Flask
+pyrogram
+tgcrypto
+pyromod
+flask
 requests
+pytz
+asyncio
