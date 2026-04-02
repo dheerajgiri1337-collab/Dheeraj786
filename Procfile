@@ -1,1 +1,1 @@
-worker: python3 modules/main.py
+web: gunicorn app:app --workers 1 --bind 0.0.0.0:$PORT
